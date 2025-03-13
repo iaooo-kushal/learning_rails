@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resource :session
+  resources :passwords, param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -19,7 +21,7 @@ Rails.application.routes.draw do
 
   get "/products/:id", to: "products#show", as: "product"
 
-  get "/products/:id/edit", to: "products#edit"
+  get "/products/:id/edit", to: "products#edit", as: "edit_product"
   patch "/products/:id", to: "products#update"
   put "/products/:id", to: "products#update"
 
